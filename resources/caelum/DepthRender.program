@@ -1,0 +1,41 @@
+// This file is part of the Caelum project.
+// It is subject to the license terms in the LICENSE file found in the top-level directory
+// of this distribution.
+
+vertex_program Caelum/DepthRenderVP cg
+{
+    source DepthComposer.cg
+    entry_point DepthRenderVP
+	profiles vs_2_0 arbvp1
+
+    default_params
+    {
+        param_named_auto wvpMatrix worldviewproj_matrix
+    }
+}
+
+fragment_program Caelum/DepthRenderFP cg
+{
+    source DepthComposer.cg
+    entry_point DepthRenderFP
+	profiles ps_3_0 fp40 arbfp1
+}
+
+vertex_program Caelum/DepthRenderAlphaRejectionVP cg
+{
+    source DepthComposer.cg
+    entry_point DepthRenderAlphaRejectionVP
+	profiles vs_2_0 arbvp1
+
+    default_params
+    {
+        param_named_auto wvpMatrix worldviewproj_matrix
+    }
+}
+
+fragment_program Caelum/DepthRenderAlphaRejectionFP cg
+{
+    source DepthComposer.cg
+    entry_point DepthRenderAlphaRejectionFP
+	profiles ps_3_0 fp40 arbfp1
+}

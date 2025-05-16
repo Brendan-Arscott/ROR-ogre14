@@ -1,0 +1,42 @@
+// This file is part of the Caelum project.
+// It is subject to the license terms in the LICENSE file found in the top-level directory
+// of this distribution.
+
+material CaelumSphereSun
+{
+    technique Defaulto
+    {
+        pass Main
+        {
+            depth_check off
+            depth_write off
+            fog_override true none
+            ambient 0 0 0
+            diffuse 0 0 0
+        }
+    }
+}
+
+material CaelumSpriteSun
+{
+    receive_shadows off
+    technique Default
+    {
+        pass Main
+        {
+            lighting off
+            depth_check off
+            depth_write off
+            fog_override true none
+            ambient 0 0 0
+            diffuse 0 0 0
+            scene_blend src_colour one_minus_src_colour
+            alpha_rejection greater_equal 128
+            emissive vertexcolour
+            texture_unit Texture0
+            {
+                texture sun_disc.png 2d 0
+            }
+        }
+    }
+}

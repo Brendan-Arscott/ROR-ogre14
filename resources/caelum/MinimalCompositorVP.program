@@ -1,0 +1,15 @@
+// This file is part of the Caelum project.
+// It is subject to the license terms in the LICENSE file found in the top-level directory
+// of this distribution.
+
+vertex_program Caelum/MinimalCompositorVP cg
+{
+	source MinimalCompositorVP.cg
+	entry_point MinimalCompositorVP
+	profiles vs_1_1 arbvp1
+	
+	default_params
+	{
+		param_named_auto worldviewproj_matrix worldviewproj_matrix
+	}
+}
