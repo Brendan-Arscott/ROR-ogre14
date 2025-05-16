@@ -42,6 +42,21 @@ jobs:
         run: ninja install
         shell: cmd
 
+      - name: Upload build to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        if: env.BUTLER_API_KEY != null && github.ref == 'refs/heads/master'
+        run: |
+          choco install butler -y
+          butler push redist rigs-of-rods/rigs-of-rods-dev:windows-ci --userversion CIBuild-%GITHUB_RUN_NUMBER%-Commit-%GITHUB_SHA%
+        shell: cmd
+
+      - name: Upload redist folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: ror-win
+          path: redist
+
       - name: Clean Conan pkgs
         run: conan cache clean "*" -sbd
         shell: cmd
