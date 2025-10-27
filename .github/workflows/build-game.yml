@@ -52,7 +52,7 @@ jobs:
         shell: cmd
 
       - name: Upload redist folder
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ror-win
           path: redist
